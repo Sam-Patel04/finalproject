@@ -10,6 +10,7 @@ RUN a2enmod rewrite \
         libjpeg62-turbo-dev \
         libpng-dev \
         libzip-dev \
+        libonig-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd mbstring \
     && apt-get clean \
