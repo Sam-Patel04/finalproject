@@ -1,0 +1,25 @@
+RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+# RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+# RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+# RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+# RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^(.*)$ $1.php
+
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+# RewriteRule ^([a-zA-Z0-9_-\w]+).pdf$ brochure_download.php [L]
+# RewriteRule ^images/brochure/(.*)$ brochure_download.php?pdf=$1 [L,NC]
+#RewriteRule ^blog$ blog_page.php [L]
+#RewriteRule ^blog/$ blog_page.php [L]
+#RewriteRule ^blog/([a-zA-Z0-9_-]+)$ blog_view.php?url=$1 [L]
+# RewriteRule ^([a-zA-Z0-9_-]+)/preview$ details.php?url=$1&preview=yes [L]
+RewriteRule ^([a-zA-Z0-9_-]+)/([0-9]+)$ category.php?url=$1&id=$2 [L]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([0-9]+)$ product-view.php?url=$2&id=$3 [L]
