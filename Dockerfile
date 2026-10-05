@@ -11,7 +11,7 @@ RUN a2enmod rewrite \
         libpng-dev \
         libzip-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd \
+    && docker-php-ext-install gd mbstring \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
